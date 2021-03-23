@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="ISO-8859-1">
+<title>Welcome to Git Hub Issue Browser</title>
+ <link href="css/bootstrap.css" rel="stylesheet" />
+ <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+<script src="lib/angular.js"></script>
+<script src="lib/angular-messages.js"></script>
+<script src="js/issueController.js"></script>
+<script src ="https://cdnjs.cloudflare.com/ajax/libs/angular-material/1.2.1/angular-material.js"></script>
+<script src ="lib/angular-animate.js"></script>
+<script src ="lib/angular-aria.js"></script>
+<link rel="stylesheet" href="https://ajax.googleapis.com/ajax/libs/angular_material/1.1.12/angular-material.min.css">
+ <link href="css/home.css" rel="stylesheet" />
+  <link data-require="bootstrap-css@2.3.2"  data-semver="2.3.2"     rel="stylesheet"   href="//netdna.bootstrapcdn.com/twitter-bootstrap/2.3.2/css/bootstrap-combined.min.css" />
+  <script data-require="angular-ui-bootstrap@0.3.0"  data-semver="0.3.0"  src="http://angular-ui.github.io/bootstrap/ui-bootstrap-tpls-0.3.0.min.js"> </script>
+ <script>
+ function getUrlVars() {
+	    var vars = {};
+	    var parts = window.location.href.replace(/[?&]+([^=&]+)=([^&]*)/gi, function(m,key,value) {
+	        vars[key] = value;
+	    });
+	    return vars;
+	}
+ var issue_id = getUrlVars()["issue_id"];
+</script>
+
+</head>
+<body  ng-app ="home" ng-controller="issueController" data-ng-init="addFields()"> 
+<h1 class="header"><b>Issues from Git hub</b></h3>
+<div>
+
+<form ng-controller="issueController" name="myForm"> 
+</form>
+</div>
+<table border=2 style="width:100%">
+ 
+<thead> 
+<tr>
+<th>Issue</th>
+<th>State</th>
+<th>Issue id</th>
+</tr>
+ 
+</thead>
+<tr ng-repeat="item in filteredItems">
+ 
+<td> {{item.issue}} </td> 
+<td> {{item.state}} </td>
+ <td><form name="f1" action="IssueDetails.html?id="+{{item.issue_id}} > <input id="id" type="submit" name="id" value={{item.issue_id}}>
+    </form></td>
+</tr>
+ <div id="container"/>
+</div>
+</table>
+ <div data-pagination="" data-num-pages="numOfPages()" data-current-page="curPage" data-max-size="maxSize" data-boundary-links="true"></div>
+</body>
+</html>
